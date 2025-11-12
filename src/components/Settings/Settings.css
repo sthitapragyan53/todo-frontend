@@ -1,0 +1,126 @@
+.settings-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #cdd4ff, #8ba2ff);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Poppins", sans-serif;
+  padding: 40px;
+}
+
+.settings-card {
+  width: 70%;
+  max-width: 600px;
+  background: rgba(255,255,255,0.55);
+  backdrop-filter: blur(18px);
+  border-radius: 28px;
+  padding: 40px;
+  text-align: center;
+  box-shadow: 0 18px 45px rgba(0,0,0,0.13);
+}
+
+.settings-header h1 {
+  font-size: 28px;
+  margin-top: 12px;
+}
+
+.settings-avatar {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #6d8aff, #4b5fff);
+  color: white;
+  font-size: 40px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 14px;
+}
+
+.settings-input-box {
+  margin: 30px 0;
+  text-align: left;
+}
+
+.settings-input-box label {
+  font-weight: 600;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.settings-input-box input {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 12px;
+  border: 1px solid #ccc;
+  margin-bottom: 12px;
+}
+
+.save-btn {
+  background: #5974ff;
+  border: none;
+  padding: 10px 22px;
+  border-radius: 18px;
+  color: white;
+  cursor: pointer;
+}
+
+.settings-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 25px;
+}
+
+.home-btn,
+.logout-btn {
+  padding: 12px;
+  border: none;
+  border-radius: 18px;
+  font-size: 16px;
+  cursor: pointer;
+  color: white;
+  text-decoration: none;
+
+}
+
+.home-btn {
+  background: #5c76ff;
+}
+
+.logout-btn {
+  background: #ff4f4f;
+}
+
+.about-btn {
+  padding: 12px;
+  border: none;
+  border-radius: 18px;
+  font-size: 16px;
+  cursor: pointer;
+  background: #ffffff90;
+  color: #333;
+  text-align: center;
+  text-decoration: none;
+  transition: 0.25s;
+}
+
+.about-btn:hover {
+  background: #ffffffc2;
+}
+
+
+@media (max-width: 600px) {
+  .settings-card {
+    width: 90%;
+    padding: 25px;
+  }
+
+  .settings-avatar {
+    width: 70px;
+    height: 70px;
+    font-size: 32px;
+  }
+}

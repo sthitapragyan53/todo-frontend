@@ -1,0 +1,113 @@
+.flip-clock-container {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.flip-colon {
+  font-size: 65px;
+  color: white;
+  margin: 0 8px;
+  font-weight: 300;
+}
+
+.flip-ampm {
+  color: white;
+  font-size: 18px;
+  margin-left: 6px;
+  margin-top: 8px;
+}
+
+/* Digit Card */
+.flip-digit {
+  position: relative;
+  width: 95px;
+  height: 130px;
+  background: #1c1c1c;
+  border-radius: 14px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 78px;
+  font-weight: 600;
+  color: white;
+  box-shadow: 0 5px 12px rgba(0,0,0,0.25);
+}
+
+.flip-digit::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 1.5px; /* adjust thickness here */
+  background: rgba(255, 255, 255, 0.18); /* subtle real flip line */
+  transform: translateY(-50%);
+  z-index: 2;
+}
+
+
+.digit-static {
+  position: relative;
+  z-index: 1;
+  font-size: inherit;
+  font-weight: inherit;
+  color: inherit;
+}
+
+
+/* Animation Layers */
+.flip-animation {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  pointer-events: none;
+}
+
+.flip-animation.flip {
+  animation: flip 0.65s forwards ease-in-out;
+}
+
+/* Top & Bottom Halves */
+.flip-upper,
+.flip-lower {
+  position: absolute;
+  width: 100%;
+  height: 50%;
+  background: #1c1c1c;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backface-visibility: hidden;
+  font-size: inherit;
+  font-weight: inherit;
+  color: inherit;
+}
+
+/* Subtle divider line */
+.flip-upper {
+  top: 0;
+  border-bottom: 1px solid rgba(255,255,255,0.12);
+}
+
+.flip-lower {
+  bottom: 0;
+  border-top: 1px solid rgba(255,255,255,0.12);
+  transform-origin: top;
+  transform: rotateX(180deg);
+}
+
+/* Flip Keyframes */
+@keyframes flip {
+  0% {
+    transform: rotateX(0deg);
+  }
+  100% {
+    transform: rotateX(-180deg);
+  }
+}

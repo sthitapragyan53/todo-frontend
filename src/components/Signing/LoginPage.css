@@ -1,0 +1,185 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing:border-box;
+    font-family:"Poppins", sans-serif;
+}
+
+/* Only affects Login Page */
+.login-page {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+    background:linear-gradient(135deg, #c9d6ff, #e2e2e2);
+    width:100%;
+    padding:20px;
+}
+
+/* Center Container */
+.login-page .container {
+    width: 100%;
+    max-width: 480px;
+    margin: auto;
+}
+
+/* Glassmorphism Card */
+.form-box {
+    width: 100%;
+    padding: 35px;
+    background: rgba(255, 255, 255, 0.18);
+    border-radius: 16px;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    box-shadow: 0 8px 35px rgba(0, 0, 0, 0.20);
+    display: none;
+    transition: 0.3s ease;
+}
+
+/* Active Form Visible */
+.form-box.active {
+    display: block;
+    animation: fadeIn 0.35s ease forwards;
+}
+
+/* Fade Animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Form Layout */
+.form-box form {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Inputs */
+.login-page input,
+.login-page select {
+    width: 100%;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.4);
+    outline: none;
+    font-size: 16px;
+    color: #333;
+    margin-top: 12px;
+    margin-bottom: 12px;
+    transition: 0.25s;
+}
+
+.login-page input::placeholder {
+    color: #666;
+}
+
+.login-page input:focus,
+.login-page select:focus {
+    border: 1px solid #7494ec;
+    box-shadow: 0 0 6px rgba(116, 148, 236, 0.4);
+}
+
+/* Button */
+.login-page button {
+    width: 100%;
+    padding: 12px;
+    background: #7494ec;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    color: #fff;
+    font-weight: 500;
+    margin-top: 8px;
+    transition: 0.25s ease;
+}
+
+.login-page button:hover {
+    background: #6884d3;
+    transform: translateY(-1px);
+}
+
+/* Form Text */
+.login-page p {
+    margin-top: 18px;
+    text-align: center;
+    font-size: 14.5px;
+    color: #111;
+}
+
+.login-page p .link {
+    color: #5a79eb;
+    cursor: pointer;
+}
+
+.login-page p .link:hover {
+    text-decoration: underline;
+}
+
+
+
+/* Tablet (≤ 768px) */
+@media (max-width: 768px) {
+
+  .login-page {
+    padding: 28px;
+  }
+
+  .form-box {
+    padding: 28px;
+  }
+
+  .login-page input,
+  .login-page select,
+  .login-page button {
+    font-size: 15px;
+    padding: 10px;
+  }
+}
+
+/* Mobile (≤ 480px) */
+@media (max-width: 480px) {
+
+  .login-page {
+    padding: 20px;
+  }
+
+  .form-box {
+    width: 100%;
+    padding: 24px;
+    border-radius: 12px;
+  }
+
+  .login-page input,
+  .login-page select,
+  .login-page button {
+    font-size: 14px;
+    padding: 9px;
+  }
+
+  .login-page p {
+    font-size: 13px;
+  }
+}
+
+/* Small Mobile (≤ 360px) */
+@media (max-width: 360px) {
+
+  .form-box {
+    padding: 20px;
+  }
+
+  .login-page input,
+  .login-page select,
+  .login-page button {
+    font-size: 13px;
+  }
+
+  .login-page p {
+    font-size: 12.5px;
+  }
+}
