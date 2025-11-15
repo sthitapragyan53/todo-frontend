@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=The+Seasons:wght@400;500;600;700&display=swap');
+
+
 .welcome-container {
   height: 100vh;
   display: flex;
@@ -17,8 +20,9 @@
 }
 
 .title span {
-  font-weight: 600;
+  font-weight: 40;
   font-style: italic;
+   font-family: "The Seasons", serif;
 }
 
 .date {
@@ -34,7 +38,7 @@
   margin-bottom: 40px;
 }
 
-/* If your FlipClock uses its own CSS, do not modify that */
+
 .clock-box {
   width: 90px;
   height: 120px;

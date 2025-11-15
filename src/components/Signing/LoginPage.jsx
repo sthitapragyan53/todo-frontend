@@ -10,6 +10,9 @@ const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  // 👁️ Password visibility toggle
+  const [showPassword, setShowPassword] = useState(false);
+
   const navigate = useNavigate();
 
   const showForm = (form) => {
@@ -20,49 +23,47 @@ const LoginPage = () => {
   };
 
   // LOGIN FUNCTION
-const handleLogin = async (e) => {
-  e.preventDefault();
+  const handleLogin = async (e) => {
+    e.preventDefault();
 
-  const res = await fetch(`${API_BASE_URL}/api/auth/login`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ email, password }),
-  });
+    const res = await fetch(`${API_BASE_URL}/api/auth/login`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, password }),
+    });
 
-  const data = await res.json();
+    const data = await res.json();
 
-  if (res.ok) {
-    localStorage.setItem("token", data.token);
-    localStorage.setItem("username", data.user.name); // ✅ Store username
-    alert("Login Successful ✅");
-    navigate("/home");
-  } else {
-    alert(data.message);
-  }
-};
+    if (res.ok) {
+      localStorage.setItem("token", data.token);
+      localStorage.setItem("username", data.user.name);
+      alert("Login Successful ✅");
+      navigate("/home");
+    } else {
+      alert(data.message);
+    }
+  };
 
   // REGISTER FUNCTION
-  // REGISTER FUNCTION
-const handleRegister = async (e) => {
-  e.preventDefault();
+  const handleRegister = async (e) => {
+    e.preventDefault();
 
-  const res = await fetch(`${API_BASE_URL}/api/auth/register`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ name, email, password }),
-  });
+    const res = await fetch(`${API_BASE_URL}/api/auth/register`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ name, email, password }),
+    });
 
-  const data = await res.json();
+    const data = await res.json();
 
-  if (res.ok) {
-    alert("Account Created ✅ Please Login");
-    showForm("login");           // Switch to Login tab
-    setName(""); setEmail(""); setPassword(""); // Clear fields
-  } else {
-    alert(data.message || "Registration failed");
-  }
-};
-
+    if (res.ok) {
+      alert("Account Created ✅ Please Login");
+      showForm("login");
+      setName(""); setEmail(""); setPassword("");
+    } else {
+      alert(data.message || "Registration failed");
+    }
+  };
 
   return (
     <div className="login-page">
@@ -79,13 +80,24 @@ const handleRegister = async (e) => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
-            <input
-              type="password"
-              placeholder="Password"
-              required
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
+
+            {/* PASSWORD FIELD WITH TOGGLE */}
+            <div className="password-wrapper">
+              <input
+                type={showPassword ? "text" : "password"}
+                placeholder="Password"
+                required
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              <span
+                className="toggle-icon"
+                onClick={() => setShowPassword((prev) => !prev)}
+              >
+                {showPassword ? "🙈" : "👁️"}
+              </span>
+            </div>
+
             <button type="submit">Login</button>
             <p>
               Don't have an account?{" "}
@@ -100,6 +112,7 @@ const handleRegister = async (e) => {
         <div className={`form-box ${activeForm === "register" ? "active" : ""}`}>
           <form onSubmit={handleRegister}>
             <h2>Register</h2>
+
             <input
               type="text"
               placeholder="Name"
@@ -107,6 +120,7 @@ const handleRegister = async (e) => {
               value={name}
               onChange={(e) => setName(e.target.value)}
             />
+
             <input
               type="email"
               placeholder="Email"
@@ -114,13 +128,24 @@ const handleRegister = async (e) => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
-            <input
-              type="password"
-              placeholder="Password"
-              required
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
+
+            {/* PASSWORD FIELD WITH TOGGLE */}
+            <div className="password-wrapper">
+              <input
+                type={showPassword ? "text" : "password"}
+                placeholder="Password"
+                required
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              <span
+                className="toggle-icon"
+                onClick={() => setShowPassword((prev) => !prev)}
+              >
+                {showPassword ? "👁️" : "🙈"}
+              </span>
+            </div>
+
             <button type="submit">Register</button>
             <p>
               Already have an account?{" "}

@@ -17,8 +17,13 @@ const Clock = () => {
   }, []);
 
   // Format Date
-  const options = { month: "short", weekday: "short", year: "numeric", day: "numeric" };
-  const dateString = time.toLocaleDateString("en-US", options);
+const day = time.getDate();  
+const month = time.toLocaleString("en-US", { month: "short" });  
+const weekday = time.toLocaleString("en-US", { weekday: "short" });  
+const year = time.getFullYear();
+
+const dateString = `${day},${month},${weekday},${year}`;
+
 
  const handleHome = () => {
   navigate("/home");
@@ -27,7 +32,8 @@ const Clock = () => {
   return (
     <div className="welcome-container">
       <h1 className="title">
-        Let’s Work<span>Together</span>
+        Let’s Work <span> 
+          Together!</span>
       </h1>
 
       <p className="date">{dateString}</p>

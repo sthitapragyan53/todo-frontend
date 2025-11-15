@@ -14,8 +14,9 @@
 }
 
 .about-title span {
-  font-style: italic;
-  font-weight: 400;
+  font-size: 50px;
+ 
+  font-weight: 600;
 }
 
 .star {
@@ -196,4 +197,21 @@
     width: 130px;
     font-size: 14px;
   }
+}
+
+
+.linkedin-icon {
+  font-size: 40px;
+  color: #0077b5;
+  margin-bottom: 8px;
+}
+
+.team-card i {
+  font-size: 40px;
+  color: #0077b5;
+  transition: 0.3s;
+}
+
+.team-card i:hover {
+  transform: scale(1.12);
 }

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Bar } from "react-chartjs-2";
-import { API_BASE_URL } from "../../config"; 
+import { useNavigate } from "react-router-dom";
+import { API_BASE_URL } from "../../config";
 import {
   Chart as ChartJS,
   BarElement,
@@ -21,7 +22,13 @@ const Progress = () => {
   const [view, setView] = useState("monthly");
   const token = localStorage.getItem("token");
 
-  // ✅ Fetch tasks from backend
+  const navigate = useNavigate();       // ✅ useNavigate inside component
+
+  // ✅ Now this works
+  const handleHome = () => {
+    navigate("/home");
+  };
+
   const fetchTasks = async () => {
     const res = await fetch(`${API_BASE_URL}/api/tasks`, {
       headers: { Authorization: `Bearer ${token}` },
@@ -34,7 +41,7 @@ const Progress = () => {
     fetchTasks();
   }, []);
 
-  // ✅ Monthly completion count
+  // Monthly count
   const completedMonthly = Array(12).fill(0);
   taskData.forEach((task) => {
     if (task.completed && task.date) {
@@ -43,7 +50,7 @@ const Progress = () => {
     }
   });
 
-  // ✅ Weekly completion count
+  // Weekly count
   const completedWeekly = Array(7).fill(0);
   const today = new Date();
   const monday = new Date(today);
@@ -86,6 +93,11 @@ const Progress = () => {
       <div className="progress-chart">
         <Bar data={chartData} />
       </div>
+
+      {/* ✅ Home Button */}
+      <button className="Home-btn" onClick={handleHome}>
+        Home
+      </button>
 
       <p className="motivational-quote">
         "Small progress every day adds up to big results."
