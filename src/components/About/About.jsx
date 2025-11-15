@@ -4,7 +4,7 @@ import "./About.css";
 
 // ⭐ Add your team's real LinkedIn profile links here
 const team = [
-  { name: "Barsa", linkedin: "https://linkedin.com/in/your-id" },
+  { name: "Barsa", linkedin: "https://www.linkedin.com/in/barsa-priyadarshini-27ab41351" },
   { name: "Sthita", linkedin: "https://www.linkedin.com/in/sthita-p-194643276" },
   { name: "Mitangi", linkedin: "https://www.linkedin.com/in/mitangi-gamit-92651a350" },
   { name: "Anshuman", linkedin: "https://www.linkedin.com/in/anshuman-dash-461932285" },
